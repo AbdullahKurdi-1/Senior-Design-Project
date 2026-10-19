@@ -1,0 +1,118 @@
+{
+  "_README": "STARTER INPUTS - every value marked PLACEHOLDER must be replaced by the ISE student with sourced data (cite it in the report). Values marked LIT come from the literature review and should still be re-checked.",
+  "plant": {
+    "_comment": "From the CHE mass balance (Student 1). PLACEHOLDER until the Aspen balance is closed. Hydrocarbon product = all C2+ and CH4 products; olefin product is part of it.",
+    "operating_hours_per_year": 8000,
+    "CO2_demand_t_per_h": 18.75,
+    "H2_demand_t_per_h": 2.56,
+    "olefin_product_t_per_year": 20000,
+    "ethylene_t_per_year": 5000,
+    "hydrocarbon_product_t_per_year": 43000
+  },
+  "co2_sources": [
+    {
+      "name": "Jubail point source A (PLACEHOLDER)",
+      "capacity_t_per_h": 12.0,
+      "cost_usd_per_t": 30.0,
+      "transport_usd_per_t": 5.0,
+      "availability": 0.97
+    },
+    {
+      "name": "Jubail point source B (PLACEHOLDER)",
+      "capacity_t_per_h": 10.0,
+      "cost_usd_per_t": 40.0,
+      "transport_usd_per_t": 8.0,
+      "availability": 0.95
+    },
+    {
+      "name": "CCS hub (PLACEHOLDER)",
+      "capacity_t_per_h": 30.0,
+      "cost_usd_per_t": 55.0,
+      "transport_usd_per_t": 10.0,
+      "availability": 0.98
+    }
+  ],
+  "h2_sources": [
+    {
+      "name": "Local electrolysis, pipeline (PLACEHOLDER)",
+      "capacity_t_per_h": 1.5,
+      "cost_usd_per_kg": 3.0,
+      "transport_usd_per_kg": 0.3,
+      "availability": 0.92
+    },
+    {
+      "name": "Remote green H2 via NH3 (PLACEHOLDER)",
+      "capacity_t_per_h": 3.0,
+      "cost_usd_per_kg": 2.5,
+      "transport_usd_per_kg": 1.2,
+      "availability": 0.95
+    }
+  ],
+  "economics": {
+    "_comment": "Triangular distributions (low, mode, high) for the Monte Carlo. CAPEX/OPEX from CHE (Student 1, CAPCOST). All economic values are PLACEHOLDERS except the LIT note.",
+    "iterations": 10000,
+    "discount_rate": 0.1,
+    "plant_life_years": 20,
+    "capex_usd": [
+      150000000.0,
+      200000000.0,
+      260000000.0
+    ],
+    "fixed_opex_fraction_of_capex": [
+      0.03,
+      0.04,
+      0.05
+    ],
+    "h2_price_usd_per_kg": [
+      2.0,
+      3.0,
+      5.0
+    ],
+    "co2_price_usd_per_t": [
+      20.0,
+      40.0,
+      60.0
+    ],
+    "olefin_price_usd_per_t": [
+      900.0,
+      1100.0,
+      1300.0
+    ],
+    "utilities_usd_per_t_product": [
+      80.0,
+      120.0,
+      160.0
+    ],
+    "catalyst_cost_usd_per_year": [
+      500000.0,
+      1000000.0,
+      2000000.0
+    ],
+    "_lit_note": "LIT: green H2 in KSA modelled as 2-5 USD/kg; captured-CO2 cost has no published Jubail price, so 20-60 USD/t is an ASSUMED range.",
+    "byproduct_price_usd_per_t": [
+      400.0,
+      600.0,
+      800.0
+    ]
+  },
+  "lca": {
+    "_comment": "kg CO2e per unit. H2 and CO2 per kg product are derived from the plant block (CHE balance).",
+    "naphtha_cracker_baseline_kgCO2e_per_kg": 1.61,
+    "electricity_kWh_per_kg_H2": 52.0,
+    "grid_kgCO2e_per_kWh": 0.55,
+    "renewable_kgCO2e_per_kWh": 0.03,
+    "other_electricity_kWh_per_kg_product": 1.5,
+    "co2_capture_kgCO2e_per_kg_co2": 0.05,
+    "credit_co2_uptake": true,
+    "_lit_note": "LIT: naphtha cracker 1.61 kg CO2e/kg ethylene. PLACEHOLDER: grid factor, electrolyser energy, capture burden - replace with sourced values."
+  },
+  "spc": {
+    "_comment": "BET surface area [m2/g] of each MSE catalyst batch (PLACEHOLDER values - replace with measurements).",
+    "bet_m2_per_g": [
+      352.0,
+      341.0,
+      365.0
+    ],
+    "spec_limit_rsd": 0.15
+  }
+}
