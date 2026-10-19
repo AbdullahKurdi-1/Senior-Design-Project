@@ -1,0 +1,66 @@
+{
+  "_comment": "Single source of truth for the reactor-slot CFD case. Edit values here, then run setup_case.py. SI units.",
+  "geometry": {
+    "_comment": "Half of one catalyst slot (symmetry plane at y = 0). Bed thickness = 2 x bed_half_thickness.",
+    "length_m": 0.15,
+    "bed_half_thickness_m": 0.002,
+    "wall_thickness_m": 0.001,
+    "slot_height_m": 0.01
+  },
+  "mesh": {
+    "cells_x": 75,
+    "cells_bed_y": 16,
+    "cells_wall_y": 4,
+    "cells_z": 10
+  },
+  "operating": {
+    "T_inlet_K": 593.15,
+    "P_Pa": 3000000.0,
+    "H2_to_CO2_ratio": 3.0,
+    "molWeight_kg_kmol": 12.5,
+    "superficial_velocity_m_s": 0.018884136216093642,
+    "coolant_T_initial_K": 588.15,
+    "coolant_h_W_m2K": 5000.0
+  },
+  "gas": {
+    "_comment": "H2/CO2 = 3 mixture at 320 C, 3 MPa. k_eff is the EFFECTIVE bed conductivity (gas + particles), entered through Pr.",
+    "Cp_J_kgK": 2670.0,
+    "mu_Pa_s": 2.2e-05,
+    "k_eff_W_mK": 0.8
+  },
+  "bed": {
+    "_comment": "Ergun coefficients are computed from particle size and porosity. Bulk density from MSE measurement.",
+    "particle_diameter_m": 0.0002,
+    "porosity": 0.4,
+    "bulk_density_kg_m3": 500.0
+  },
+  "wall": {
+    "_comment": "Stainless steel 316 plate",
+    "rho_kg_m3": 8000.0,
+    "Cp_J_kgK": 500.0,
+    "k_W_mK": 16.0
+  },
+  "reaction": {
+    "_comment": "Heat source = 1-D model profile q_ref(x) at T_ref, corrected every chunk by exact Arrhenius using each zone's temperature (n_zones axial x n_radial_bands).",
+    "T_ref_K": 593.15,
+    "Ea_J_mol": 90000.0,
+    "X_target_at_Tref": 0.35,
+    "CO_selectivity": 0.15,
+    "n_zones": 15,
+    "n_radial_bands": 4
+  },
+  "control": {
+    "_comment": "PI(D) controller: manipulates coolant temperature to hold the volume-average bed temperature at the setpoint.",
+    "setpoint_mean_bed_T_K": 593.15,
+    "Kp": 0.5,
+    "Ki": 0.1,
+    "Kd": 0.0,
+    "coolant_T_min_K": 543.15,
+    "coolant_T_max_K": 603.15,
+    "chunk_s": 2.0,
+    "t_end_s": 160.0,
+    "disturbance_time_s": 60.0,
+    "feed_flow_step": 1.1
+  },
+  "heat_profile_file": "feasibility/results/heat_profile_kinetic.json"
+}

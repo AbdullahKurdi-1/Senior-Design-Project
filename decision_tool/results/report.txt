@@ -3,28 +3,28 @@
    CO2  Jubail point source B (PLACEHOLDER)             6.75 t/h
    CO2  CCS hub (PLACEHOLDER)                           0.00 t/h
    H2   Local electrolysis, pipeline (PLACEHOLDER)      1.50 t/h
-   H2   Remote green H2 via NH3 (PLACEHOLDER)           1.06 t/h
+   H2   Remote green H2 via NH3 (PLACEHOLDER)           1.26 t/h
 
 2. FEED AVAILABILITY vs H2 BUFFER STORAGE (target >= 98 %)
    buffer     0 t H2  -> availability 94.68 %
-   buffer     5 t H2  -> availability 95.98 %
-   buffer    10 t H2  -> availability 97.33 %
-   buffer    20 t H2  -> availability 98.57 %
-   buffer    40 t H2  -> availability 99.49 %
+   buffer     5 t H2  -> availability 95.70 %
+   buffer    10 t H2  -> availability 96.93 %
+   buffer    20 t H2  -> availability 98.30 %
+   buffer    40 t H2  -> availability 99.39 %
    buffer    80 t H2  -> availability 100.00 %
    smallest buffer meeting 98 %: 20 t
 
 3. TECHNO-ECONOMICS (Monte Carlo, 10000 runs)
-   NPV  P10 / P50 / P90 :   -938.2 /   -769.9 /   -634.6  MUSD
+   NPV  P10 / P50 / P90 :   -988.7 /   -808.9 /   -663.8  MUSD
    P(NPV > 0)           : 0.0 %
-   unit production cost P50 : 5623 USD/t olefin (net of by-product credit)
-   break-even green-H2 price (NPV = 0): -1.10 USD/kg
+   unit production cost P50 : 5506 USD/t olefin (net of by-product credit)
+   break-even green-H2 price (NPV = 0): -0.99 USD/kg
 
 4. CRADLE-TO-GATE GHG (kg CO2e / kg product, mass allocation)
-   inventory: 0.476 kg H2 and 3.49 kg CO2 per kg product
-   renewable net  -2.18  gross  0.96   reduction vs naphtha (1.61):  235.4 %
-   grid      net  11.48  gross 14.62   reduction vs naphtha (1.61): -612.9 %
-   break-even electricity intensity for a 45 % reduction: 0.147 kg CO2e/kWh
+   inventory: 0.473 kg H2 and 3.21 kg CO2 per kg product
+   renewable net  -2.20  gross  0.94   reduction vs naphtha (1.61):  236.7 %
+   grid      net  11.36  gross 14.50   reduction vs naphtha (1.61): -605.4 %
+   break-even electricity intensity for a 45 % reduction: 0.148 kg CO2e/kWh
    NOTE: CO2 feedstock uptake credited (state this in the LCA goal & scope); set credit_co2_uptake false to see the result without it.
 
 5. SPC - catalyst BET surface area

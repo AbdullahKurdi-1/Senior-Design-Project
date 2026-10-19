@@ -30,6 +30,10 @@ python3 decision_tool/decision_tool.py       # ISE analyses (seconds)
 
 Reference outputs from a test run are in `cfd/results/` and `decision_tool/results/`.
 
+## Feasibility dry-run
+
+[`feasibility/FEASIBILITY.md`](feasibility/FEASIBILITY.md) tests every specification and constraint (calibrated kinetics, plant mass balance with recycle, 11 CFD stress cases, catalyst/pressure/budget checks) and lists the decisions the team must make early.
+
 ## Status: starter, not final
 
 * The code runs end to end. It was tested with OpenFOAM v1912 and Python 3.12.

@@ -1,0 +1,49 @@
+SPEC 4 - estimated BET of the finished catalyst [m2/g] (silica dilution x pore blockage)
+  Fe wt% | oxide wt% | MCF 500 m2/g      | MCF 650 m2/g      | MCF 800 m2/g
+         |           | block 10% / 25%   | block 10% / 25%   | block 10% / 25%
+   10.0  |    23.4   |   345 /   287     |   448 /   373     |   552 /   460     
+   15.0  |    34.2   |   296 /   247     |   385 /   321     |   474 /   395     
+  minimum MCF support area for >= 300 m2/g at 10 wt% Fe (20 % blockage): 489 m2/g
+  minimum MCF support area for >= 300 m2/g at 15 wt% Fe (20 % blockage): 570 m2/g
+
+INTEGRATED SPEC 3 - catalyst over-design to keep X >= 35 % for 8,000 h
+  conversion depends on (activity x catalyst mass / feed), so the extra catalyst needed is 1 / (end-of-run activity)
+  end-of-run activity  80 % of fresh -> install 1.25 x the fresh-catalyst mass (+25 %)
+  end-of-run activity  60 % of fresh -> install 1.67 x the fresh-catalyst mass (+67 %)
+  end-of-run activity  50 % of fresh -> install 2.00 x the fresh-catalyst mass (+100 %)
+  end-of-run activity  30 % of fresh -> install 3.33 x the fresh-catalyst mass (+233 %)
+  literature: Zn-promoted Fe stable > 200 h; Ba-Na-Fe > 500 h; no published 8,000 h CO2-FTS test was found
+
+CONSTRAINT 1 - pressure design
+  module shell ID 0.5 m: ASME VIII UG-27 t = PR/(SE-0.6P) + CA = 12.9 mm (S = 100 MPa SS316 at ~350 C assumed, E = 0.85, CA = 3 mm)
+  module shell ID 1.0 m: ASME VIII UG-27 t = PR/(SE-0.6P) + CA = 22.9 mm (S = 100 MPa SS316 at ~350 C assumed, E = 0.85, CA = 3 mm)
+  module shell ID 1.5 m: ASME VIII UG-27 t = PR/(SE-0.6P) + CA = 32.8 mm (S = 100 MPa SS316 at ~350 C assumed, E = 0.85, CA = 3 mm)
+  API 520 relief, blocked outlet with full fresh feed 21310 kg/h (M = 12.6, k = 1.38): A = 1496 mm2 -> API orifice 'L'
+
+COOLANT CHOICE (affects Spec 3 and Constraint 1)
+  boiling water at 280 C needs 6.4 MPa steam-drum pressure (process side 3.0 MPa)
+  boiling water at 300 C needs 8.6 MPa steam-drum pressure (process side 3.0 MPa)
+  boiling water at 310 C needs 9.9 MPa steam-drum pressure (process side 3.0 MPa)
+  boiling water at 320 C needs 11.3 MPa steam-drum pressure (process side 3.0 MPa)
+  -> boiling water at ~319 C means coolant-side pressure ~3.7x the process pressure. Alternatives: an organic heat-transfer
+     fluid (Dowtherm A / Therminol type; low-pressure, check vendor vapour-pressure data) with h ~ 1,000-3,000 W/m2K, which the
+     CFD stress tests cover through the h = 1,000 case.
+
+CONSTRAINT 6 - feedstock vs Saudi supply
+  CO2 needed for 5,000 t/yr ethylene: 93 - 93 kt/yr (all kinetic cases)
+  H2 needed                         : 13.7 - 13.7 kt/yr
+  SABIC/Linde Jubail purification ~1,500 t/d (~550 kt/yr, already supplied to methanol/urea); Aramco-Linde-SLB CCS hub up to 9 Mt/yr by 2027
+  NEOM Green Hydrogen: up to 219 kt/yr (contracted as ammonia export); first production expected around 2027
+
+CONSTRAINT 7 - laboratory budget ESTIMATE (SAR, catalogue-type prices, replace with quotes)
+  Pluronic P123, 250 g                                          650
+  TEOS 98 %, 1 L                                                450
+  1,3,5-trimethylbenzene, 500 mL                                300
+  Fe(NO3)3.9H2O, 500 g                                          250
+  Zn(NO3)2.6H2O, 500 g                                          250
+  KNO3 or K2CO3, 500 g                                          150
+  HCl 37 %, 1 L                                                 150
+  crucibles, filter paper, glassware, gas for aging (N2)        700
+  TOTAL chemicals and consumables                              2900
+  characterization (XRD, BET, SEM/EDS, TGA) for 3 batches + 2 aged samples = about 20-25 measurements:
+  internal KFUPM rates decide whether SAR 5,000 is enough; ask the lab managers for their student rates

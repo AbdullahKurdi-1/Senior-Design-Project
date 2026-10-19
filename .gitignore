@@ -3,3 +3,4 @@ __pycache__/
 cfd/case/
 cfd/study/
 .ipynb_checkpoints/
+feasibility/cfd_runs/

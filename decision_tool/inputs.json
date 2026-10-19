@@ -1,13 +1,13 @@
 {
   "_README": "STARTER INPUTS - every value marked PLACEHOLDER must be replaced by the ISE student with sourced data (cite it in the report). Values marked LIT come from the literature review and should still be re-checked.",
   "plant": {
-    "_comment": "From the CHE mass balance (Student 1). PLACEHOLDER until the Aspen balance is closed. Hydrocarbon product = all C2+ and CH4 products; olefin product is part of it.",
+    "_comment": "From feasibility/plant_balance.py (calibrated kinetics, 150 kt/yr CO2, 2 % purge). Replace with the Aspen balance (Student 1) when closed.",
     "operating_hours_per_year": 8000,
     "CO2_demand_t_per_h": 18.75,
-    "H2_demand_t_per_h": 2.56,
-    "olefin_product_t_per_year": 20000,
-    "ethylene_t_per_year": 5000,
-    "hydrocarbon_product_t_per_year": 43000
+    "H2_demand_t_per_h": 2.759,
+    "olefin_product_t_per_year": 21554,
+    "ethylene_t_per_year": 8083,
+    "hydrocarbon_product_t_per_year": 46711
   },
   "co2_sources": [
     {

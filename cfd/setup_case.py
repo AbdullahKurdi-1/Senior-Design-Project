@@ -64,9 +64,10 @@ def sh(cmd, log):
 def load():
     with open(SETTINGS) as f:
         s = json.load(f)
-    hp_path = os.path.join(HERE, "..", "reactor_model", "heat_profile.json")
+    hp_rel = s.get("heat_profile_file", "reactor_model/heat_profile.json")   # path relative to the repo root
+    hp_path = os.path.join(HERE, "..", hp_rel)
     if not os.path.exists(hp_path):
-        sys.exit("Run reactor_model/plug_flow_model.py first (heat_profile.json missing).")
+        sys.exit("heat-release profile %s missing - run reactor_model/plug_flow_model.py first" % hp_rel)
     with open(hp_path) as f:
         hp = json.load(f)
     return s, hp
