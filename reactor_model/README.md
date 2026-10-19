@@ -27,4 +27,7 @@ python3 plug_flow_model.py
 1. Replace the calibrated first-order rate with **literature Fe–Zn–K kinetics** (RWGS + FT with olefin
    selectivity) and validate against at least 3 published datasets.
 2. Use the **same kinetics** in Aspen Plus (RPlug) and check that the Python and Aspen conversions agree.
-3. Add the selectivity outputs (C₂–C₄ olefins ≥ 40 %, Spec 2) once the kinetics are in.
+3. Add the selectivity outputs (C₂–C₄ olefins ≥ 35 %, Spec 2) once the kinetics are in.
+
+The calibrated RWGS + Fischer–Tropsch kinetics from `feasibility/kinetics.py` give the default CFD heat profile
+(`heat_profile_kinetic.json`). `plug_flow_model.py` (first-order placeholder) is kept for hand checks.

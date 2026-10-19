@@ -2,6 +2,8 @@
 
 Date: 19 Oct 2026. All scripts in this folder reproduce the numbers below. Tested with OpenFOAM v1912 and Python 3.13.
 
+> **Adopted design (19 Oct 2026):** boiling Dowtherm A coolant (≈ 3.4 bar), 1.5 mm plates, 4 mm bed (≤ 6 mm), Spec 2 = ≥ 35 % C₂–C₄ olefins, ≈ 10 wt % Fe catalyst, Constraint 7 = investor economic basis. These are the CFD defaults; base case ΔT 3.6 K.
+
 ## Verdict
 
 **The project is doable as specified.** No specification is impossible. Three items need a design decision or a

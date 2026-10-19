@@ -3,9 +3,9 @@
 This folder models **one catalyst slot** of the micro-structured fixed-bed reactor in OpenFOAM:
 
 ```
- coolant (boiling water, h = 5000 W/m²K, temperature Ta set by the PID controller)
+ coolant (boiling Dowtherm A ≈ 3.4 bar, h = 1500 W/m²K, temperature Ta set by the PID controller)
  ┌──────────────────────────────────────────────────────────┐
- │ steel plate, 1 mm            (region "solid")             │
+ │ steel plate, 1.5 mm          (region "solid")             │
  ├──────────────────────────────────────────────────────────┤ ← conjugate heat transfer
  │ porous catalyst bed, half of 4 mm   (region "fluid")      │
  │ H2/CO2 = 3 gas, 320 °C, 3.0 MPa → reaction heat in 60 zones│ → outlet
@@ -15,7 +15,7 @@ This folder models **one catalyst slot** of the micro-structured fixed-bed react
 
 * **Solver:** `chtMultiRegionFoam` (conjugate heat transfer, gas + steel).
 * **Porous bed:** Darcy–Forchheimer resistance from the Ergun equation (particle size, porosity).
-* **Reaction heat:** the axial profile comes from the 1-D model (`../reactor_model`). Before every
+* **Reaction heat:** the axial profile comes from the calibrated RWGS + Fischer–Tropsch kinetics (`../reactor_model/heat_profile_kinetic.json`). Before every
   2-second chunk, each of the 60 bed zones (15 axial × 4 across the bed) gets the **exact Arrhenius**
   heat release for its current temperature. This is how a hot spot can feed on itself.
 * **Control:** `run_pid.py` is a Python co-simulation. It runs OpenFOAM in 2 s chunks, reads the bed
@@ -77,7 +77,8 @@ To change anything (bed thickness, coolant h, conductivity, setpoint, PID gains,
 * The heat-release profile comes from a 1-D model with first-order lumped kinetics and fixed CO selectivity (15 %).
 * The bed's heat capacity is the **gas only**. The real bed (particles) heats up about 20× more slowly, so
   transients here are faster than reality. Steady-state temperatures are unaffected.
-* The coolant is a convective boundary (boiling water); the coolant channel itself is not meshed.
+* The coolant is a convective boundary (boiling Dowtherm A, h = 1,500 W/m²K); the coolant channel itself is not meshed.
+  Boiling water was rejected: it needs ≈ 111 bar at 319 °C.
 * The effective bed conductivity (0.8 W/m·K) is an assumption; see the sensitivity task above.
 * The Arrhenius update is explicit, once per chunk (2 s). Reduce `chunk_s` if temperatures oscillate.
 * The feed step scales the heat release 1:1 with flow, a conservative upper bound.
