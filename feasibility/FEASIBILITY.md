@@ -86,3 +86,46 @@ Calibration point and selectivity anchors come from the literature review (FeK o
 conversion at 6,000 mL/(g·h), 320 °C, 3.0 MPa; Fe–Zn–K 51–55 % conversion with 53.6–57.4 % C₂–C₄ olefins at 320 °C).
 Student 1 must cite the original papers when replacing the calibration. Steam saturation pressures are IAPWS values.
 The RWGS equilibrium uses Moe's correlation. Prices are catalogue estimates.
+
+## Decisions tested (items 1–3) and the recommended scenario
+
+Scripts: `options_test.py` (calculations) and `cfd_coolant.py` (CFD). Outputs: `results/options_test.txt`, `results/cfd_coolant.csv`.
+
+### Item 1 – Coolant: **boiling Dowtherm A** (recommended)
+
+| | Boiling water | Boiling Dowtherm A |
+|---|---|---|
+| Pressure at 319 °C | 11.1 MPa | 0.34 MPa (Clausius–Clapeyron fit to the NOAA data sheet) |
+| Plate thickness for worst ΔP (10 mm span, S = 100 MPa) | 2.4 mm | 1.2 mm → use 1.5 mm |
+| Coolant evaporated (14.9 MW duty) | 12 kg/s | 48 kg/s |
+| Heat recovery | 111-bar steam | vapour condensed in a steam generator |
+| Hazard | high-pressure drum | flammable above its 124 °C flash point → HAZOP node, leak detection |
+| CFD, +10 % feed step, PID | 3.2 K (h 5,000) | **3.6 K (h 1,500), 3.3 K (h 2,500)** |
+| CFD, −10 % feed step | 3.2 K | 3.2 K |
+| CFD, worst case (k_eff 0.3) | 9.8 K (h 1,000) | 9.1 K (h 1,500) |
+
+The bed holds 320.0 °C in every case and the energy balance closes to 0.01 %.
+
+### Item 2 – Spec 2: **lower to ≥ 35 % C₂–C₄ olefins** (recommended)
+
+| Published point (≥ 1 MPa) | Light-olefin selectivity |
+|---|---|
+| Na/Fe@Co, 330 °C, 3.0 MPa | ~35 % (CO-free) |
+| FeCoK/ZrO₂, 350 °C, 3.0 MPa | 28 % |
+| Review catalyst, 320 °C, 3.0 MPa | ~45 % of converted carbon |
+| Na-(Fe,Co)₅C₂/CNT, 340 °C, 1.0 MPa | ~39 % |
+| ZnCoₓFe₂₋ₓO₄ spinel | 36 % |
+
+At 40 % only 1 of these 5 points passes; at 35 %, 4 of 5 pass. The model meets 35 % up to α = 0.63 (40 % only up to 0.58).
+Keep the 150 kt/yr CO₂ design basis: at α = 0.62 ethylene still reaches 5,000 t/yr (Integrated Spec 1 holds).
+
+### Item 3 – Loading: **10 wt % Fe** (recommended)
+
+| Fe wt % | BET on 500 / 600 / 700 m²/g MCF | Support needed | Catalyst |
+|---|---|---|---|
+| 8 | 324 / 388 / 453 | ≥ 463 | 11.3 t |
+| **10** | **306 / 368 / 429** | **≥ 489** | **10.5 t** |
+| 12 | 289 / 347 / 405 | ≥ 519 | 10.0 t |
+| 15 | 263 / 316 / 369 | ≥ 570 | 9.0 t |
+
+10 wt % passes Spec 4 even on a low-end support, for about 1.5 t more catalyst than 15 wt %. Move to 12 wt % only if the bare MCF measures ≥ 600 m²/g.

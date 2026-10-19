@@ -1,0 +1,5 @@
+case,mode,max_dT_K,final_dT_K,final_Tmax_C,final_Tmean_C,final_coolant_C,energy_imbalance
+dow_h1500_pid_plus10,pid,3.558179999999993,3.551400000000058,321.76641000000006,320.00001164416665,317.262228832083,0.00 % of generation (should be small at steady state)
+dow_h1500_pid_minus10,pid,3.2125500000000784,2.8806899999999587,321.42827,319.9999732741667,317.7646622577496,0.00 % of generation (should be small at steady state)
+dow_h2500_pid_plus10,pid,3.2672900000000027,3.259990000000016,321.6306900000001,320.00003041666673,317.72104090633275,0.00 % of generation (should be small at steady state)
+dow_h1500_worst_keff03,open,9.06520999999998,9.06520999999998,329.02615000000003,324.3423006400001,319.0,0.01 % of generation (should be small at steady state)

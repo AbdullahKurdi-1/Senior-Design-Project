@@ -1,0 +1,40 @@
+ITEM 1 - COOLANT AT 319 C
+  saturation pressure at 319 C : water 11.1 MPa | Dowtherm A 3.42 bar (Clausius-Clapeyron fit, dHvap 309 kJ/kg)
+  check of the fit at 400 C    : 12.0 bar (Dow literature value is about 10 bar)
+  plate thickness needed, water (11.1 MPa coolant, process depressurised)           : 2.36 mm (worst dP 11.1 MPa)
+  plate thickness needed, Dowtherm A (process 3.3 MPa at relief, coolant 0.34 MPa)  : 1.22 mm (worst dP 3.0 MPa)
+  reactor heat duty            : 14.9 MW (from the plant balance)
+  coolant evaporated           : water 12.0 kg/s (dHvap ~1,240 kJ/kg) | Dowtherm A 48 kg/s
+  heat use                     : water -> 111-bar steam (high value) | Dowtherm vapour -> condensed in a steam
+                                 generator making ~ 10-40 bar steam
+  hazards                      : water - none (but 111-bar drum) | Dowtherm A - flash point 124 C, autoignition 621 C,
+                                 runs above its flash point: leaks are a fire hazard -> HAZOP node, leak detection
+  CFD check (bed dT with boiling Dowtherm, h 1,500-2,500 W/m2K): see results/cfd_coolant.csv
+
+ITEM 2 - SPEC 2 TARGET (C2-C4 olefins, CO-free hydrocarbons) vs PUBLISHED DATA AT >= 1 MPa
+  catalyst                                           T C   MPa    X %  light-olefin selectivity %
+  Na/Fe@Co core-shell                                330   3.0   50.3  33.8 (CO 4.6 %, so ~35 CO-free)
+  FeCoK/ZrO2                                         350   3.0   36.0  28
+  Catalyst in review (320 C, 3 MPa, 12,000 mL/g h)   320   3.0   48.0  29.0 mmol C/(g h) = ~45 of converted C
+  (Fe1-xCox)5C2 Na-promoted / CNT (Kim et al.)       340   1.0   34.0  ~39
+  ZnCoxFe2-xO4 spinel (Xu et al.)                    n/r   n/r   49.6  36.1
+  Fe-Zn-K (Zhang et al.) - low pressure              320   0.5   51.0  53.6-57.4
+  Fe7C3-KMg (2025)                                   340   2.0   41.5  67.1 high-value olefins incl. C5+ alpha-olefins
+  data at >= 1 MPa (or unstated): 28, 35, 36, 39, 45  -> median 36 %
+  share of these points meeting 40 %: 1 of 5   meeting 35 %: 4 of 5
+  target 40 %: met up to chain-growth alpha = 0.58 (CH4 12 %, O/P 4)
+  target 35 %: met up to chain-growth alpha = 0.63 (CH4 12 %, O/P 4)
+  alpha 0.50: C2-C4 olefins 46.9 %, ethylene 17.6 % -> 7962 t/yr from 150 kt CO2 (CO2 for 5,000 t: 94 kt/yr)
+  alpha 0.60: C2-C4 olefins 38.1 %, ethylene 12.1 % -> 5459 t/yr from 150 kt CO2 (CO2 for 5,000 t: 137 kt/yr)
+  alpha 0.62: C2-C4 olefins 36.1 %, ethylene 11.0 % -> 4999 t/yr from 150 kt CO2 (CO2 for 5,000 t: 150 kt/yr)
+
+ITEM 3 - CATALYST LOADING (Fe:Zn = 2:1 molar, 1.5 wt % K)
+  ASSUMED: 20 % pore blockage; Fe-oxide crystallite 6/7/8/9 nm at 8/10/12/15 wt % Fe (confined MCF literature 6-10 nm);
+           activity per gram ~ Fe loading / crystallite size (surface Fe); reference = 15 wt % (6-9 t catalyst at that activity)
+  Fe wt% | BET @ MCF 500 / 600 / 700 m2/g | min MCF for 300 | rel. activity | catalyst t | crystallite <= 15 nm
+      8  |       324 /  388 /  453           |       463       |     0.80      |   11.3     |  yes (6 nm)
+     10  |       306 /  368 /  429           |       489       |     0.86      |   10.5     |  yes (7 nm)
+     12  |       289 /  347 /  405           |       519       |     0.90      |   10.0     |  yes (8 nm)
+     15  |       263 /  316 /  369           |       570       |     1.00      |    9.0     |  yes (9 nm)
+  most favourable: 10 wt % Fe - highest activity that still passes Spec 4 even on a low-end 500 m2/g support
+  (12 wt % Fe gives only 5 % more activity but fails on a 500 m2/g support; use it only if the bare MCF measures >= 600 m2/g)
